@@ -1,0 +1,40 @@
+html, body {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#gpMenu{
+    background-color: #008F95;
+}
+
+.mainImageItem{
+    padding-top: 10px 15px 10px 10px;
+    
+}
+
+#siteName{
+    padding-left: 15px;
+    color: #1cab9e;
+    font-size: 35px;
+    padding-bottom: 3.5px;
+    font-family: courier new;
+}
+
+.selectMenu{
+    font-size: 18px;
+    font-family: courier new;
+}
+
+
+
+/*Screen width below 650px
+@media screen and (max-width: 650px){
+    #siteName{
+        font-size: 25px;
+    }
+    
+    .selectMenu{
+        font-size: 12px;
+    }
+}*/

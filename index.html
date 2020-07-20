@@ -7,18 +7,36 @@
   <title>geoPaul</title>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' rel='stylesheet'
     type='text/css'>
-  
-  <style>
-  body{
-    background-color: orange;
-    color: red;
-  }
-  
-  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css">
+  <link href='css/geopaul.css' rel='stylesheet' type='text/css'>
   
 </head>
   
 <body>
-  Test Text... getting started
-</body
+  <div class="ui fixed inverted menu gpMenu" style="background-color: #222629;">
+    <div class="item mainImageItem" id="menuLeft">
+      <img class="ui fluid image" src="img/spaceholder.jpg" style="height: 50px; width: 50px;">
+      <span id="siteName">
+        geoPaul
+      </span>
+    </div>
+    <a class="active item selectMenu">
+      Home
+    </a>
+    <a class="item selectMenu">
+      Projects
+    </a>
+    <a class="item selectMenu">
+      Other Category
+    </a>
+
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js'></script>
+  <script src="https://js.arcgis.com/4.11/"></script>
+  <script src='js/geopaul.js'></script>
+</body>
 </html>
