@@ -4,8 +4,8 @@ html, body {
     width: 100%;
 }
 
-#gpMenu{
-    background-color: #008F95;
+.gpMenu{
+    background-color: white!important;
 }
 
 .mainImageItem{
@@ -22,8 +22,22 @@ html, body {
 }
 
 .selectMenu{
-    font-size: 18px;
+    font-size: 22px;
     font-family: courier new;
+    color: black;
+}
+
+#homePage{
+    margin-top: 7em;
+}
+
+#aboutText{
+    font-family: courier new;
+    font-size: 18px;
+}
+
+#projectsPage{
+    display: none;
 }
 
 
