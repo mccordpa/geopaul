@@ -3,6 +3,7 @@ var test = $()
 if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
     console.log("products is active")
 
+    //Places Lived Map
     var livedMap = L.map("placesLivedMap").setView([42.000, -81.500], 5);
 
     L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
@@ -30,6 +31,93 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
     bloomingtonMarker.bindPopup("<table style='font-size: 12px; width:150px'><tr><th>City and State</th><td>Bloomington, IN</td></tr><tr><th>Period Here</th><td>2012-2017</td></tr><tr><th>Add'l Notes</th><td>Best IN city</td></tr></table>")
     howellMarker.bindPopup("<table style='font-size: 12px; width:150px'><tr><th>City and State</th><td>Howell, MI</td></tr><tr><th>Period Here</th><td>2017-2019</td></tr><tr><th>Add'l Notes</th><td>Good running routes</td></tr></table>")
     cantonMarker.bindPopup("<table style='font-size: 12px; width:150px'><tr><th>City and State</th><td>Canton, MI</td></tr><tr><th>Period Here</th><td>2019-Pres</td></tr><tr><th>Add'l Notes</th><td>30 miles to Detroit</td></tr></table>")
+
+
+    //Kenya Map
+
+    // Add AJAX request for data
+    var kenyaData = $.ajax({
+        url:"https://raw.githubusercontent.com/mccordpa/geoData/master/kenya.geojson",
+        dataType: "json",
+        success: console.log("WP data successfully loaded."),
+        error: function (xhr) {
+          alert(xhr.statusText)
+        }
+    })
+
+    //Specify that this code should run once the Kenya GIS data request is complete
+    $.when(kenyaData).done(function(){
+
+        var kenyaMap = L.map("kenyaMap").setView([0.05 , 37.27], 10);
+
+        var basemap = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+            minZoom: 5,
+            attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(kenyaMap);
+
+
+        //Add request to map
+        var cwpLocations = L.geoJSON(kenyaData.responseJSON, {
+            
+            
+
+            style: function(feature){
+                var calcColor = (feature.properties.WRUA)
+                if(calcColor == "Nanyuki"){
+                    var wruaColor = "#2ffa39"
+                } else if(calcColor == "Likii"){
+                    var wruaColor = "#fa472f"
+                } else if(calcColor == "Ngusishi"){
+                    var wruaColor = "#2f73fa"
+                } else if(calcColor == "Timau"){
+                    var wruaColor = "#fa2fec"
+                } else {
+                    var wruaColor = "#f7fa2f"
+                }
+
+                return{
+                    color: wruaColor
+                }
+            },
+            pointToLayer: function(feature, latlng){
+                return new L.CircleMarker(latlng, {
+                    radius: 7,
+                    fillOpacity: 0.6,
+                    weight: 2
+                })
+            },
+            onEachFeature: function(feature, layer){
+                layer.bindPopup("<table style='font-size: 14px; width: 250px;'><tr><th>Water Project Name</th><td>" + feature.properties.wpName + "</td><tr><tr><th>WRUA Name</th><td>" + feature.properties.WRUA + "</td><tr></table>")
+            }
+        })
+
+        console.log(cwpLocations)
+        kenyaMap.addLayer(cwpLocations)
+        /*
+        console.log("cwp locations", cwpLocations)
+
+        var geojsonMarkerOptions = {
+            radius: 20,
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 0.5,
+            fillOpacity: 0.8
+        };
+
+        
+        L.geoJson(cwpLocations, {
+            pointToLayer: function(feature, latlng){
+                return new L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(kenyaMap);*/
+
+    })
+
+    
+
+    
+    
 }
 
 

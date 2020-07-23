@@ -6,6 +6,7 @@ html, body {
 
 .gpMenu{
     background-color: white!important;
+    z-index: 9999!important;
 }
 
 .mainImageItem{
@@ -53,6 +54,12 @@ html, body {
     margin-right: 10px;
 }
 
+#kenyaMap{
+    height: 370px;
+    width: 400px;
+    float: left;
+    margin-right: 10px;
+}
 
 /*Screen width below 650px
 @media screen and (max-width: 650px){
