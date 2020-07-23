@@ -13,7 +13,7 @@ html, body {
     
 }
 
-#siteName{
+.siteName{
     padding-left: 15px;
     color: #1cab9e;
     font-size: 35px;
@@ -27,7 +27,7 @@ html, body {
     color: black;
 }
 
-#homePage{
+.contentPage{
     margin-top: 7em;
 }
 
@@ -36,10 +36,22 @@ html, body {
     font-size: 18px;
 }
 
-#projectsPage{
-    display: none;
+.mapTitle{
+    font-family: courier new!important;
+    font-size: 21px!important
 }
 
+.mapDesc{
+    font-family: courier new!important;
+    font-size: 18px!important;
+}
+
+#placesLivedMap{
+    height: 370px;
+    width: 400px;
+    float: left;
+    margin-right: 10px;
+}
 
 
 /*Screen width below 650px

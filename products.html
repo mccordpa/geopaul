@@ -1,0 +1,79 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>Products - geoPaul</title>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' rel='stylesheet'
+    type='text/css'>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+  <link href='css/geopaul.css' rel='stylesheet' type='text/css'>
+  
+</head>
+  
+<body>
+  <div class="ui secondary fixed menu gpMenu">
+    <div class="ui text container">
+      <div class="item mainImageItem" id="menuLeft">
+        <img class="ui fluid image" src="img/spaceholder.jpg" style="height: 50px; width: 50px; margin-left: -19px;">
+        <span class="siteName">
+          geoPaul
+        </span>
+      </div>
+      <a href="index.html" class="item selectMenu">
+        Home
+      </a>
+      <a href="projects.html" class="item selectMenu">
+        Projects
+      </a>
+      <a href="products.html" class="active item selectMenu">
+        Products
+      </a>
+    </div>
+  </div>
+  <div id="productsPage" class="ui text container contentPage">
+    <div class="ui segment" style="width: 720px;">
+      <h1 style="font-family: courier new;">Some map products...</h1>
+      <!--<a href="https://www.waynecounty.com/parkfinder" target="_blank">
+        <img class="ui fluid rounded left floated image" src="img/parkfinder.PNG" style="height: 183pxpx;; width: 382.4px;">
+      </a>
+      <p id="productsText"><strong>Wayne County ParkFinder</strong> was developed using the ArcGIS API for Javascript. The application allows users to 
+        search for a park of interest by location or park features. The application's goal is to increase outdoor activity and park usage throughout 
+        Wayne County, MI.
+      </p>-->
+      <div class="ui items">
+        <div class="item">
+          <div class="ui small item">
+            <div id="placesLivedMap"></div>
+          </div>
+          <div class="content">
+            <div class="header mapTitle">Places Lived</div>
+            <div class="description mapDesc">
+              <p>Before making this map, I thought it would be a little more exciting. Then I realized
+                I apparently have an aversion to anything outside of the Rust Belt region. I do have good coverage of the I-96 corridor through Michigan, though. <br><br>This map was created using 
+                the Leaflet API.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--
+      <div id="productsText"><strong>Places Lived.</strong> Before making this map, I thought it would be a little more exciting. Then I realized
+      I apparently have an aversion to anything outside of the Rust Belt region. <br><br>I do have good coverage of the I-96 expressway across Michigan, though. <br><br>This map was created using 
+      the Leaflet API.</div>-->
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js'></script>
+  <script src="https://js.arcgis.com/4.11/"></script>
+  <script src='js/geopaul.js'></script>
+</body>
+</html>
