@@ -114,6 +114,119 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
 
     })
 
+
+    //CO2 Map
+    var stateCO2;
+
+    // Add AJAX request for data
+    var co2Data = $.ajax({
+        url:"https://raw.githubusercontent.com/mccordpa/geoData/master/CO2_state",
+        dataType: "json",
+        success: console.log("CO2 data successfully loaded."),
+        error: function (xhr) {
+          alert(xhr.statusText)
+        }
+    })
+
+    //Specify that this code should run once the CO2 GIS data request is complete
+    $.when(co2Data).done(function(){
+
+        var mapboxTokenStateCO2 = "pk.eyJ1IjoicGF1bGZtY2NvcmQiLCJhIjoiY2tkN2phcGJyMnJhZDJ1cXl5dGEzbXp3NCJ9.8KduhExvSdrfUp2UUKmr2A"
+        var co2Map = L.map("co2Map").setView([37.8 , -96.7026], 4);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxTokenStateCO2, {
+            id: 'mapbox/light-v9',
+            attribution: "",
+            tileSize: 512,
+            minZoom: 2,
+            zoomOffset: -1
+        }).addTo(co2Map);
+
+        //Assign color according to CO2 Emissions / Density
+        function getColorDens(d){
+            return d > 85.01 ? '#990000' :
+                    d > 28.5047  ? '#D7301F' :
+                    d > 19.7952  ? '#EF6548' :
+                    d > 14.411  ? '#FC8D59' :
+                    d > 11.4961   ? '#FDBB84' :
+                    d > 9.414   ? '#FDD49E' :
+                                '#FEF0D9';
+        }
+
+        /*
+        //Assign color according to CO2 Emissions / Density
+        function getColorDens(d){
+            return d > 360.9 ? '#800026' :
+                    d > 176.96  ? '#BD0026' :
+                    d > 123.2  ? '#E31A1C' :
+                    d > 78.7  ? '#FC4E2A' :
+                    d > 38.57   ? '#FD8D3C' :
+                    d > 2.63   ? '#FEB24C' :
+                                '#FFEDA0';
+        }*/
+
+        //Styling for CO2 Emissions / Density
+        function styleDens(feature){
+            return{
+                fillColor: getColorDens(feature.properties.CarbonDens),
+                weight: 2,
+                opacity: 0.7,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            }
+        }
+
+        //Adding map interaction - Highlighting hovered states
+        function highlightFeature(e){
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 5,
+                color: "black",
+                opacity: 0.5,
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge){
+                layer.bringToFront();
+            }
+            
+        }
+
+        //Removing highlighting on mouseout
+        function resetHighlight(e){
+            stateCO2.resetStyle(e.target)
+        }
+
+        //Zoom to state on click
+        function zoomToFeature(e){
+            co2Map.fitBounds(e.target.getBounds())
+        }
+
+        //Add listeners to each state
+        function onEachFeature(feature, layer){
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: zoomToFeature
+            })
+        }
+
+        //Add request to map
+        stateCO2 = L.geoJSON(co2Data.responseJSON, {
+            style: styleDens,
+            onEachFeature: onEachFeature
+        }).addTo(co2Map)
+
+        console.log(stateCO2)
+        //co2Map.addLayer(stateCO2)
+
+        
+
+    })
+
     
 
     
