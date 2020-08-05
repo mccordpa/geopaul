@@ -192,12 +192,14 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge){
                 layer.bringToFront();
             }
-            
+            info.update(layer.feature.properties);
+
         }
 
         //Removing highlighting on mouseout
         function resetHighlight(e){
             stateCO2.resetStyle(e.target)
+            info.update();
         }
 
         //Zoom to state on click
@@ -221,9 +223,49 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
         }).addTo(co2Map)
 
         console.log(stateCO2)
-        //co2Map.addLayer(stateCO2)
 
+        console.log(stateCO2)
         
+        //Create the info panel
+        var info = L.control();
+
+        info.onAdd = function(co2Map){
+            this._div = L.DomUtil.create("div", "info") //create a div with a class 'info'
+            this.update();
+            return this._div;
+        };
+
+        //this method updates the control based on the feature properties that are passed
+        info.update = function(props){
+            this._div.innerHTML = '<h5>Per Capita Energy-Related CO2 Emissions</h5>' + (props ?
+                '<b>' + props.STATE_NAME + '</b><br />' + props.CarbonDens + '<br /><p> metric tons of energy-related CO2 per person</p>'
+                : 'Hover over a state')
+        }
+
+        info.addTo(co2Map)
+
+        //Map legend
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (co2Map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 9.4, 11.5, 14.41, 19.8, 28.51, 101.4],
+                labels = [];
+
+            div.innerHTML = '<h5>Legend</h5><h6>Metric tons of energy-related <br /> CO2 per person</h6>'
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColorDens(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            }
+
+            return div;
+        };
+
+        legend.addTo(co2Map);
 
     })
 
