@@ -2,6 +2,7 @@ html, body {
     margin: 0px;
     height: 100%;
     width: 100%;
+    padding-bottom: 50px;
 }
 
 .gpMenu{
@@ -35,6 +36,29 @@ html, body {
 #aboutText{
     font-family: courier new;
     font-size: 18px;
+}
+
+.expSegment h3{
+    font-family: courier new!important;
+}
+
+.expSegment .header{
+    font-family: courier new!important;
+}
+
+.expSegment .item{
+    font-family: courier new!important;
+}
+
+.metaList{
+    color: rgb(99, 99, 99);
+    font-size: 12px;
+    font-family: courier new!important;
+}
+
+.pubLink::before{
+    content: "\A";
+    white-space: pre;
 }
 
 .mapTitle{
