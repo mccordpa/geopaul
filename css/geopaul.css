@@ -8,6 +8,8 @@ html, body {
 .gpMenu{
     background-color: white!important;
     z-index: 9999!important;
+    border: 0px!important;
+    /*margin-bottom: -5em!important;*/
 }
 
 .mainImageItem{
