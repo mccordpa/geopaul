@@ -1,6 +1,6 @@
 html, body {
     margin: 0px;
-    height: 100%;
+    /*height: 100%;*/
     width: 100%;
     padding-bottom: 50px;
 }
@@ -25,10 +25,18 @@ html, body {
     font-family: courier new;
 }
 
+.siteName:hover{
+    color: #127068;
+}
+
 .selectMenu{
     font-size: 22px;
     font-family: courier new;
     color: black;
+}
+
+#homePage{
+    padding-bottom: 2em!important;
 }
 
 .contentPage{
@@ -38,6 +46,10 @@ html, body {
 #aboutText{
     font-family: courier new;
     font-size: 18px;
+}
+
+.homeMain{
+    margin-top: -5em!important;
 }
 
 .expSegment h3{
