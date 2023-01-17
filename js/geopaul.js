@@ -48,7 +48,7 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
     //Specify that this code should run once the Kenya GIS data request is complete
     $.when(kenyaData).done(function(){
 
-        var kenyaMap = L.map("kenyaMap").setView([0.05 , 37.27], 20);
+        var kenyaMap = L.map("kenyaMap").setView([0.05 , 37.27], 10);
 
         var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
             minZoom: 5,
