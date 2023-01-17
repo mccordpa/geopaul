@@ -50,7 +50,7 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
 
         var kenyaMap = L.map("kenyaMap").setView([0.05 , 37.27], 10);
 
-        var basemap = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+        var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
             minZoom: 5,
             attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(kenyaMap);
