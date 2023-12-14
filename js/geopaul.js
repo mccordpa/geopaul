@@ -6,7 +6,7 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
     //Places Lived Map
     var livedMap = L.map("placesLivedMap").setView([42.000, -81.500], 5);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png'', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'MAP tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         subdomains: 'abcd',
         minZoom: 5,
