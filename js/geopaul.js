@@ -7,7 +7,7 @@ if($(".selectMenu[data-rel='productsMenuItem']").hasClass("active")){
     var livedMap = L.map("placesLivedMap").setView([42.000, -81.500], 5);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: ''&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         subdomains: 'abcd',
         minZoom: 5,
         maxZoom: 11,
